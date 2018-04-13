@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.PostProcessing;
 using UnityEngine;
 
 public class camMouseLook : MonoBehaviour {
@@ -9,9 +10,15 @@ public class camMouseLook : MonoBehaviour {
     public float sensitivity = 5f;
     public float smoothing = 2f;
     GameObject character;
+    PostProcessingProfile blurry;
+
+
+    public bool isBlurry = true;
+    
 	// Use this for initialization
 	void Start () {
         character = this.transform.parent.gameObject;
+        blurry = GetComponent<PostProcessingBehaviour>().profile;
 	}
 	
 	// Update is called once per frame
@@ -26,5 +33,15 @@ public class camMouseLook : MonoBehaviour {
 
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
+
+        if (isBlurry)
+        {
+            blurry.depthOfField.enabled = true;
+            blurry.motionBlur.enabled = true;
+        } else
+        {
+            blurry.depthOfField.enabled = false;
+            blurry.motionBlur.enabled = false;
+        }
 	}
 }
