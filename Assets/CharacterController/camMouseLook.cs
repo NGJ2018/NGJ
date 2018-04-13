@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.PostProcessing;
 using UnityEngine;
 
-public class camMouseLook : MonoBehaviour {
+public class camMouseLook : MonoBehaviour
+{
 
     Vector2 mouseLook;
     Vector2 smoothV;
@@ -14,15 +15,17 @@ public class camMouseLook : MonoBehaviour {
 
 
     public bool isBlurry = true;
-    
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start()
+    {
         character = this.transform.parent.gameObject;
         blurry = GetComponent<PostProcessingBehaviour>().profile;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
         md = Vector2.Scale(md, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
@@ -34,14 +37,18 @@ public class camMouseLook : MonoBehaviour {
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
 
-        if (isBlurry)
+        if (blurry != null)
         {
-            blurry.depthOfField.enabled = true;
-            blurry.motionBlur.enabled = true;
-        } else
-        {
-            blurry.depthOfField.enabled = false;
-            blurry.motionBlur.enabled = false;
+            if (isBlurry)
+            {
+                blurry.depthOfField.enabled = true;
+                blurry.motionBlur.enabled = true;
+            }
+            else
+            {
+                blurry.depthOfField.enabled = false;
+                blurry.motionBlur.enabled = false;
+            }
         }
-	}
+    }
 }
