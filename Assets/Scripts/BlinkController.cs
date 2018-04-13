@@ -11,10 +11,17 @@ public class BlinkController : MonoBehaviour {
 
 	private Animator anim;
 
+	public Material blinkMat;
+
 	public static BlinkController Singleton;
+
+	[Range(0,1)]
+	public float Progress;
 
 
 	public void Start(){
+		//blinkMat = new Material(Shader.Find("Custom/BlinkShader"));
+
 		anim = GetComponent<Animator> ();
 
 		OnBlink += RandomBlinkStuff;
@@ -23,8 +30,9 @@ public class BlinkController : MonoBehaviour {
 		Singleton = this;
 	}
 
-	private void OnRengerImage(RenderTexture src, RenderTexture dst){
-		Graphics.Blit (src, dst);
+	private void OnRenderImage(RenderTexture src, RenderTexture dst){
+		blinkMat.SetFloat ("_Progress", Progress);
+		Graphics.Blit (src, dst, blinkMat);
 	}
 
 	public static void RandomBlinkStuff(){
