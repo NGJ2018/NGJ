@@ -34,18 +34,14 @@ public class camMouseLook : MonoBehaviour {
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
 
-        if (blurry != null)
+        if (isBlurry)
         {
-            if (isBlurry)
-            {
-                blurry.depthOfField.enabled = true;
-                blurry.motionBlur.enabled = true;
-            }
-            else
-            {
-                blurry.depthOfField.enabled = false;
-                blurry.motionBlur.enabled = false;
-            }
+            blurry.depthOfField.enabled = true;
+            blurry.motionBlur.enabled = true;
+        } else
+        {
+            blurry.depthOfField.enabled = false;
+            blurry.motionBlur.enabled = false;
         }
 	}
 }
