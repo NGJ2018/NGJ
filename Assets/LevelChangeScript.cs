@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class LevelChangeScript : MonoBehaviour {
 
-    public Dictionary<int,GameObject> levelEntrences;
-    public int currentLevel;
+    private Dictionary<int,GameObject> levelEntrences;
+    private int currentLevel;
+	public int CurrentLevel{
+		get{ 
+			return currentLevel;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
