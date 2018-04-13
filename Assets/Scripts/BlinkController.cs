@@ -11,7 +11,7 @@ public class BlinkController : MonoBehaviour {
 
 	private Animator anim;
 
-	public Material blinkMat;
+	private Material blinkMat;
 
 	public static BlinkController Singleton;
 
@@ -19,8 +19,14 @@ public class BlinkController : MonoBehaviour {
 	public float Progress;
 
 
+	public void Update(){
+		if (Input.GetButtonDown ("Blink")) {
+			InitiateBlink ();
+		}
+	}
+
 	public void Start(){
-		//blinkMat = new Material(Shader.Find("Custom/BlinkShader"));
+		blinkMat = new Material(Shader.Find("Custom/BlinkShader"));
 
 		anim = GetComponent<Animator> ();
 
@@ -51,12 +57,13 @@ public class BlinkController : MonoBehaviour {
 		
 	}
 
+	/*
 	public void OnGUI(){
 		if (GUI.Button (new Rect(new Vector2(100,100), new Vector2(100,20)), "BLINK")) {
 			InitiateBlink ();
 		}
 	}
-
+	*/
 	public void StartBlink (){
 		if (OnBlink != null) {
 			OnBlink ();
