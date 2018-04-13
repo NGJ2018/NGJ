@@ -2,14 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioSender : MonoBehaviour {
+[RequireComponent(typeof(AudioSource))]
+public class AudioSender : Clickable {
 
-	// Use this for initialization
+	private AudioSource AS;
+
 	void Start () {
-		
+		AS = GetComponent<AudioSource> ();
+		AS.Play ();
 	}
-	
-	// Update is called once per frame
+
+	public override void Interact(){
+		TurnOff ();
+	}
+
+	public void TurnOff (){
+		AS.Stop ();
+	}
+
 	void Update () {
 		
 	}
