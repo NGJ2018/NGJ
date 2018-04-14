@@ -27,7 +27,7 @@ public class saturationScript : MonoBehaviour
             grain = saturation.grain.settings;
             if (isSaturationOn)
             {
-                if (grain.intensity<=1) //Gradually increase grain intensity to 1
+                if (grain.intensity<=0.5f) //Gradually increase grain intensity to 1
                 {
                     grain.intensity += 0.01f;
                 }
