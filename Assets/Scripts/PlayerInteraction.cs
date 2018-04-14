@@ -37,16 +37,18 @@ public class PlayerInteraction : MonoBehaviour {
             {
                 saturation.isSaturationOn = false;
             }
-        }
-
-        if (hit.transform == null) { current_gameobject = null; }
             current_gameobject_click = hit.transform.gameObject.GetComponent<Clickable>();
-            
-            if(old_gameobject_click != current_gameobject_click){
-                if(old_gameobject_click != null) { old_gameobject_click.NoHover(); }
+
+            if (old_gameobject_click != current_gameobject_click)
+            {
+                if (old_gameobject_click != null) { old_gameobject_click.NoHover(); }
                 old_gameobject_click = current_gameobject_click;
             }
+
         }
+
+        Debug.Log("saturation: " + saturation.isSaturationOn);
+
 
         if (hit.transform == null) { current_gameobject_click = null; }
         
