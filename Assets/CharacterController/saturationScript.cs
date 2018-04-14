@@ -40,7 +40,6 @@ public class saturationScript : MonoBehaviour
                 }
             }
             saturation.grain.settings = grain; //Set grain settings in postprocessing profile to new settings
-            Debug.Log(grain.intensity);
         }
 
     }

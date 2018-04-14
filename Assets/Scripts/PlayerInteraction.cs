@@ -8,15 +8,22 @@ public class PlayerInteraction : MonoBehaviour {
     public float distance;
     public GameObject old_gameobject;
     public GameObject current_gameobject;
+    private saturationScript saturation;
 
     // Use this for initialization
     void Start () {
         mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+        saturation = mainCamera.GetComponent<saturationScript>();
 	}
 	
 	void FixedUpdate () {
         //Hovering
         Vector3 rayOrigin = mainCamera.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
+
+        if (saturation!=null)
+        {
+            saturation.isSaturationOn = true;
+        }
 
         RaycastHit hit;
         
@@ -30,6 +37,11 @@ public class PlayerInteraction : MonoBehaviour {
             }
             current_gameobject = hit.transform.gameObject;
             old_gameobject = current_gameobject;
+
+            if (saturation != null)
+            {
+                saturation.isSaturationOn = false;
+            }
         }
 
         if (hit.transform == null) { current_gameobject = null; }
