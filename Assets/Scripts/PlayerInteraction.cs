@@ -23,7 +23,7 @@ public class PlayerInteraction : MonoBehaviour {
         if (Physics.Raycast(rayOrigin, mainCamera.transform.forward, out hit, distance))
         {
             //Debug.DrawLine(rayOrigin, hit.transform.position, Color.green);
-            var interactableObject = hit.transform.gameObject.GetComponent<InteractableObject>();
+			var interactableObject = hit.transform.gameObject.GetComponent<Clickable>();
             if (interactableObject != null)
             {
                 interactableObject.Hover();
@@ -36,7 +36,7 @@ public class PlayerInteraction : MonoBehaviour {
 
         if (old_gameobject != current_gameobject && old_gameobject != null)
         {
-            var interactableObject = old_gameobject.GetComponent<InteractableObject>();
+			var interactableObject = old_gameobject.GetComponent<Clickable>();
             if (interactableObject != null){
                 interactableObject.NoHover();
             }
@@ -45,7 +45,7 @@ public class PlayerInteraction : MonoBehaviour {
         //Interacting
         //Input.GetKeyDown("Fire1")
         if (Input.GetMouseButtonDown(0) && current_gameobject != null){
-            var interactableObject = current_gameobject.GetComponent<InteractableObject>();
+			var interactableObject = current_gameobject.GetComponent<Clickable>();
             if (interactableObject != null){
                 interactableObject.Interact();
             }
