@@ -20,9 +20,6 @@ public abstract class Clickable : MonoBehaviour {
     }
 
     public void NoHover(){
-
-        Debug.Log("NOHOVER");
-
         var render = this.gameObject.GetComponent<Renderer>();
         if (render != null){
             render.material = basic_material;

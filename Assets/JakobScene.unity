@@ -774,6 +774,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774b800952271b749a5df9048daf0dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
+  distance: 3
   old_gameobject: {fileID: 0}
   current_gameobject: {fileID: 0}

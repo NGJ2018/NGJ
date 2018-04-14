@@ -9,6 +9,7 @@ public class InteractableObject : Clickable {
 
     public override void Interact(){
         //Do something with audioClip
+        Debug.Log("MY NAME: "+this.gameObject.name);
     }
 
     // Use this for initialization
