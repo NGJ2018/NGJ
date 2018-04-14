@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 81299305132463872}
   - component: {fileID: 114602532135554896}
   - component: {fileID: 95823882398184864}
+  - component: {fileID: 114128933919884578}
+  - component: {fileID: 114205742795056654}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -104,6 +106,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114128933919884578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689887188263420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de6275d281571843a77ac54f2d34682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSaturationOn: 0
+--- !u!114 &114205742795056654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689887188263420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 828bff2904e5d9c42bf3ffe2ec896c70, type: 2}
 --- !u!114 &114602532135554896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21200e4466b94c00963b7083c450dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crosshair: {fileID: 0}
+  Progress: 0
 --- !u!124 &124780451006110876
 Behaviour:
   m_ObjectHideFlags: 1
