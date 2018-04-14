@@ -6,7 +6,7 @@ public abstract class Clickable : MonoBehaviour {
 
     public abstract void Interact();
 
-    public void Hower(){
+    public void Hover(){
 
     }
 

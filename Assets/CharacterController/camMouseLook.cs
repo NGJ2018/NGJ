@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class camMouseLook : MonoBehaviour
 {
-
     Vector2 mouseLook;
     Vector2 smoothV;
     public float sensitivity = 5f;
@@ -13,14 +12,13 @@ public class camMouseLook : MonoBehaviour
     GameObject character;
     PostProcessingProfile blurry;
 
-
     public bool isBlurry = true;
 
     // Use this for initialization
     void Start()
     {
         character = this.transform.parent.gameObject;
-        blurry = GetComponent<PostProcessingBehaviour>().profile;
+        //blurry = GetComponent<PostProcessingBehaviour>().profile;
     }
 
     // Update is called once per frame
