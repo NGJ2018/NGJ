@@ -733,7 +733,12 @@ Prefab:
     - target: {fileID: 114825170191004638, guid: 70bf15d712b2446d38259924bb243e9a,
         type: 2}
       propertyPath: distance
-      value: 50
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114900312312012606, guid: 70bf15d712b2446d38259924bb243e9a,
+        type: 2}
+      propertyPath: distance
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70bf15d712b2446d38259924bb243e9a, type: 2}
@@ -1062,7 +1067,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 0}
     - target: {fileID: 1543419700157870, guid: 6f5c8ad1cbb429a45b48a8fc7da9b0f7, type: 2}
       propertyPath: m_Name
       value: Cup

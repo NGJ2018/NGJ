@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  distance: 1
+  distance: 5
   old_gameobject_click: {fileID: 0}
   current_gameobject_click: {fileID: 0}
 --- !u!124 &124408263531232432

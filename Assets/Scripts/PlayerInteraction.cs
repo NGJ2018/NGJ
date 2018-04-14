@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour {
         //Hovering
         Vector3 rayOrigin = mainCamera.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
 
-        if (saturation!=null)
+        if (saturation != null)
         {
             saturation.isSaturationOn = true;
         }

@@ -23,7 +23,6 @@ public class saturationScript : MonoBehaviour
     {
         if (saturation != null)
         {
-            Debug.Log("Old: "+grain.intensity);
             saturation.grain.enabled = true;
             grain = saturation.grain.settings;
             if (isSaturationOn)
@@ -41,7 +40,6 @@ public class saturationScript : MonoBehaviour
                 }
             }
             saturation.grain.settings = grain; //Set grain settings in postprocessing profile to new settings
-            Debug.Log("New: " + grain.intensity);
         }
 
     }
