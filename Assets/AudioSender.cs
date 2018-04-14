@@ -19,8 +19,4 @@ public class AudioSender : Clickable {
 	public void TurnOff (){
 		AS.Stop ();
 	}
-
-	void Update () {
-		
-	}
 }
