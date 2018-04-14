@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: ToonBasicOutline
   m_Shader: {fileID: 4800000, guid: 9ce107479d11178d11005b9844295342, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -27,12 +27,16 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Outline: 0.007
+    - _Falloff: 10
+    - _Outline: 0.012
+    - _SampleDistance: 1
+    - _SensitivityDepth: 3.75
+    - _SensitivityNormals: 0.82
     - _Shininess: 0.579717
     m_Colors:
-    - _Color: {r: 0.75735295, g: 0.75735295, b: 0.75735295, a: 1}
+    - _Color: {r: 0.4627451, g: 0.4627451, b: 0.4627451, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1002 &2100001
 EditorExtensionImpl:

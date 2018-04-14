@@ -5,6 +5,11 @@ Shader "Toon/Basic Outline" {
 		_Outline ("Outline width", Range (.002, 0.03)) = .005
 		_MainTex ("Base (RGB)", 2D) = "white" { }
 		_ToonShade ("ToonShader Cubemap(RGB)", CUBE) = "" { }
+		//Edge detection
+		_SensitivityDepth("SensitivityDepth", Range(0,5)) = 3.75
+		_SensitivityNormals("SensitivityNormals", Range(0,5)) = 0.82
+		_SampleDistance("SampleDistance", Range(0,2)) = 1
+		_Falloff("Falloff", Range(0, 100)) = 10.0
 	}
 	
 	CGINCLUDE
@@ -45,6 +50,11 @@ Shader "Toon/Basic Outline" {
 	SubShader {
 		Tags { "RenderType"="Opaque" }
 		UsePass "Toon/Basic/BASE"
+		//Edge detection
+		// Physically based Standard lighting model, and enable shadows on all light types
+		//#pragma surface surf Standard fullforwardshadows finalcolor:edgecolor
+		// Use shader model 3.0 target, to get nicer looking lighting
+		//#pragma target 3.0
 		Pass {
 			Name "OUTLINE"
 			Tags { "LightMode" = "Always" }
@@ -54,6 +64,7 @@ Shader "Toon/Basic Outline" {
 			Blend SrcAlpha OneMinusSrcAlpha
 
 			CGPROGRAM
+			//Toon shader
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma multi_compile_fog
