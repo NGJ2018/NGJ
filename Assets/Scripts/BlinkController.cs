@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 public class BlinkController : MonoBehaviour {
@@ -8,6 +9,7 @@ public class BlinkController : MonoBehaviour {
 	public delegate void BlinkDelegate();
 	public static event BlinkDelegate OnBlink;
 	public static event BlinkDelegate OnBlinkEnd;
+    public Image crosshair;
 
 	private Animator anim;
 
@@ -34,6 +36,7 @@ public class BlinkController : MonoBehaviour {
 		OnBlinkEnd += RandomBLinkStuffEnd;
 
 		Singleton = this;
+        crosshair = GameObject.Find("CrossHair").GetComponent<Image>();
 	}
 
 	private void OnRenderImage(RenderTexture src, RenderTexture dst){
@@ -43,7 +46,7 @@ public class BlinkController : MonoBehaviour {
 
 	public static void RandomBlinkStuff(){
 		print ("BlinkStart");
-	}
+    }
 
 	public static void RandomBLinkStuffEnd(){
 		print ("BlinkEnd");
@@ -67,13 +70,15 @@ public class BlinkController : MonoBehaviour {
 	public void StartBlink (){
 		if (OnBlink != null) {
 			OnBlink ();
-		}
+            crosshair.enabled = false;
+        }
 	}
 
 	public void StopBlink(){
 		if (OnBlinkEnd != null) {
 			OnBlinkEnd();
-		}
+            crosshair.enabled = true;
+        }
 	}
 
 	public IEnumerator BlackEffectRoutine(){
