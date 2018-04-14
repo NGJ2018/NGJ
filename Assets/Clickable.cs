@@ -25,5 +25,9 @@ public abstract class Clickable : MonoBehaviour {
             render.material = basic_material;
         }
     }
-
+	public void OnGUI(){
+		if (GUI.Button (new Rect (new Vector2 (100, 100), new Vector2 (100, 20)), "interact")) {
+			Interact ();
+		}
+	}
 }
