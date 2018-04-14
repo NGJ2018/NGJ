@@ -10,13 +10,23 @@ public abstract class Clickable : MonoBehaviour {
     public abstract void Interact();
 
     public void Hover(){
-        this.gameObject.GetComponent<Renderer>().material = basic_material_with_outline;
+        if(basic_material == null){
+            //FIND MATERIAL
+        }
+        var render = this.gameObject.GetComponent<Renderer>();
+        if(render != null){
+            render.material = basic_material_with_outline;
+        }
     }
 
     public void NoHover(){
-        //var mat = this.gameObject.GetComponent<Material>();
-        //mat = basic_material_with_outline;
-        this.gameObject.GetComponent<Renderer>().material = basic_material;
+
+        Debug.Log("NOHOVER");
+
+        var render = this.gameObject.GetComponent<Renderer>();
+        if (render != null){
+            render.material = basic_material;
+        }
     }
 
 }

@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 287426837}
   - component: {fileID: 287426836}
   - component: {fileID: 287426835}
+  - component: {fileID: 287426839}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -244,6 +245,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &287426839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 287426834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49930673df20c254dbacf1b36d10d13c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basic_material: {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
+  basic_material_with_outline: {fileID: 2100000, guid: 215977489d11178d11005b9844295342,
+    type: 2}
+  audioClip: {fileID: 0}
 --- !u!1 &313292776
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +404,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1886c995b798e2d4aa40e6ca2db21f26, type: 2}
+  - {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -449,9 +465,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 981679930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1c866ca8de98ef41b090d012757c9c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 49930673df20c254dbacf1b36d10d13c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basic_material: {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
+  basic_material_with_outline: {fileID: 2100000, guid: 215977489d11178d11005b9844295342,
+    type: 2}
+  audioClip: {fileID: 0}
 --- !u!1001 &1112467316
 Prefab:
   m_ObjectHideFlags: 0
@@ -549,6 +569,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114618930336724086, guid: a8c0728d0ed06f74ca29e45d2f98cd2e,
+        type: 2}
+      propertyPath: sampleDist
+      value: 0.5018
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8c0728d0ed06f74ca29e45d2f98cd2e, type: 2}
   m_IsPrefabParent: 0
@@ -568,6 +593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774b800952271b749a5df9048daf0dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: 2
+  old_gameobject: {fileID: 0}
+  current_gameobject: {fileID: 0}
 --- !u!1 &1615065065
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +629,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4d97c1cacd503624a9f07d750ae6a33c, type: 2}
+  - {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -664,6 +692,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49930673df20c254dbacf1b36d10d13c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basic_material: {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
+  basic_material_with_outline: {fileID: 2100000, guid: 215977489d11178d11005b9844295342,
+    type: 2}
+  audioClip: {fileID: 0}
 --- !u!1 &1616547424
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,3 +758,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1691053068 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1278888729498538, guid: a8c0728d0ed06f74ca29e45d2f98cd2e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1112467316}
+--- !u!114 &1691053069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1691053068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774b800952271b749a5df9048daf0dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 5
+  old_gameobject: {fileID: 0}
+  current_gameobject: {fileID: 0}
