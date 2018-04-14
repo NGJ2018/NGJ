@@ -6,8 +6,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - basic_material: {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342, type: 2}
-  - basic_material_with_outline: {fileID: 2100000, guid: 215977489d11178d11005b9844295342,
+  - basic_material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - basic_material_with_outline: {fileID: 2100000, guid: 84b9e1d19d11078d11005b9844295342,
       type: 2}
   - audioClip: {instanceID: 0}
   executionOrder: 0

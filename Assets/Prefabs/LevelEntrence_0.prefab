@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4159680176763378}
   m_Layer: 0
-  m_Name: Level_Entrence_0
+  m_Name: LevelEntrence_0
   m_TagString: Level_Entrence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
