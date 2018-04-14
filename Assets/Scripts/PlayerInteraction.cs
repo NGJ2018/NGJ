@@ -6,9 +6,9 @@ public class PlayerInteraction : MonoBehaviour {
 
     public Camera mainCamera;
     public float distance;
-    public GameObject old_gameobject;
-    public GameObject current_gameobject;
     private saturationScript saturation;
+    public Clickable old_gameobject_click;
+    public Clickable current_gameobject_click;
 
     // Use this for initialization
     void Start () {
@@ -29,15 +29,10 @@ public class PlayerInteraction : MonoBehaviour {
         
         if (Physics.Raycast(rayOrigin, mainCamera.transform.forward, out hit, distance))
         {
-            //Debug.DrawLine(rayOrigin, hit.transform.position, Color.green);
 			var interactableObject = hit.transform.gameObject.GetComponent<Clickable>();
-            if (interactableObject != null)
-            {
+            if (interactableObject != null){
                 interactableObject.Hover();
             }
-            current_gameobject = hit.transform.gameObject;
-            old_gameobject = current_gameobject;
-
             if (saturation != null)
             {
                 saturation.isSaturationOn = false;
@@ -45,25 +40,38 @@ public class PlayerInteraction : MonoBehaviour {
         }
 
         if (hit.transform == null) { current_gameobject = null; }
-
-        if (old_gameobject != current_gameobject && old_gameobject != null)
-        {
-			var interactableObject = old_gameobject.GetComponent<Clickable>();
-            if (interactableObject != null){
-                interactableObject.NoHover();
+            current_gameobject_click = hit.transform.gameObject.GetComponent<Clickable>();
+            
+            if(old_gameobject_click != current_gameobject_click){
+                if(old_gameobject_click != null) { old_gameobject_click.NoHover(); }
+                old_gameobject_click = current_gameobject_click;
             }
         }
 
+        if (hit.transform == null) { current_gameobject_click = null; }
+        
         //Interacting
         //Input.GetKeyDown("Fire1")
-        if ((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")) && current_gameobject != null){
-            var interactableObject = current_gameobject.GetComponent<Clickable>();
+        if ((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")) && current_gameobject_click != null){
+          var interactableObject = current_gameobject_click;
             if (interactableObject != null){
                 interactableObject.Interact();
             }
             
         }
-
         
+    }
+
+    private bool checkIfObjectsHaveChanged(){
+        if (old_gameobject_click != current_gameobject_click && old_gameobject_click != null)
+        {
+            var interactableObject = old_gameobject_click;
+            if (interactableObject != null)
+            {
+                interactableObject.NoHover();
+            }
+            return true;
+        }
+        else { return false; }
     }
 }
