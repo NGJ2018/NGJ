@@ -512,6 +512,12 @@ Prefab:
       propertyPath: isBlurry
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114370515505061664, guid: 69f95decc115b73469aa60d0547ad220,
+        type: 2}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 11400000, guid: 828bff2904e5d9c42bf3ffe2ec896c70,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69f95decc115b73469aa60d0547ad220, type: 2}
   m_IsPrefabParent: 0

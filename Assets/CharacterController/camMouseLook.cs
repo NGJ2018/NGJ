@@ -10,15 +10,15 @@ public class camMouseLook : MonoBehaviour
     public float sensitivity = 5f;
     public float smoothing = 2f;
     GameObject character;
-    PostProcessingProfile blurry;
+    PostProcessingProfile saturation;
 
-    public bool isBlurry = true;
+    public bool isSaturationOn = false;
 
     // Use this for initialization
     void Start()
     {
         character = this.transform.parent.gameObject;
-        //blurry = GetComponent<PostProcessingBehaviour>().profile;
+        saturation = GetComponent<PostProcessingBehaviour>().profile;
     }
 
     // Update is called once per frame
@@ -35,17 +35,19 @@ public class camMouseLook : MonoBehaviour
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
 
-        if (blurry != null)
+        if (saturation != null)
         {
-            if (isBlurry)
+            if (isSaturationOn)
             {
-                blurry.depthOfField.enabled = true;
-                blurry.motionBlur.enabled = true;
+                saturation.motionBlur.enabled = true;
+                saturation.bloom.enabled = true;
+                saturation.grain.enabled = true;
             }
             else
             {
-                blurry.depthOfField.enabled = false;
-                blurry.motionBlur.enabled = false;
+                saturation.motionBlur.enabled = false;
+                saturation.bloom.enabled = false;
+                saturation.grain.enabled = false;
             }
         }
     }
