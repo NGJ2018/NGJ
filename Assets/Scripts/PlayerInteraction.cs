@@ -45,8 +45,11 @@ public class PlayerInteraction : MonoBehaviour {
         //Interacting
         //Input.GetKeyDown("Fire1")
         if (Input.GetMouseButtonDown(0) && current_gameobject != null){
-            var interactableObject = hit.transform.gameObject.GetComponent<InteractableObject>();
-            interactableObject.Interact();
+            var interactableObject = current_gameobject.GetComponent<InteractableObject>();
+            if (interactableObject != null){
+                interactableObject.Interact();
+            }
+            
         }
 
         
