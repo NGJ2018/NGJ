@@ -16,8 +16,12 @@ public class PlayerInteraction : MonoBehaviour {
         saturation = mainCamera.GetComponent<saturationScript>();
 	}
 	
-	void FixedUpdate () {
+	void Update () {
         //Hovering
+
+		if (BlinkController.Singleton.IsBlinking)
+			return;
+
         Vector3 rayOrigin = mainCamera.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
 
         if (saturation != null)
@@ -54,8 +58,9 @@ public class PlayerInteraction : MonoBehaviour {
         
         //Interacting
         //Input.GetKeyDown("Fire1")
-        if ((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")) && current_gameobject_click != null){
-          var interactableObject = current_gameobject_click;
+		if (Input.GetMouseButtonDown(0) && current_gameobject_click != null && current_gameobject_click.playAudio){
+			print ("pressed");
+			var interactableObject = current_gameobject_click;
             if (interactableObject != null){
                 interactableObject.Interact();
             }

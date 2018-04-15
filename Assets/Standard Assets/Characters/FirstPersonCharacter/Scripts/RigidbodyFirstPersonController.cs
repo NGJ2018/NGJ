@@ -24,6 +24,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             private bool m_Running;
 #endif
 
+
             public void UpdateDesiredTargetSpeed(Vector2 input)
             {
 	            if (input == Vector2.zero) return;
@@ -46,8 +47,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
 	            if (Input.GetKey(RunKey))
 	            {
-		            CurrentTargetSpeed *= RunMultiplier;
-		            m_Running = true;
+		            //CurrentTargetSpeed *= RunMultiplier;
+		            //m_Running = true;
 	            }
 	            else
 	            {
@@ -88,6 +89,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
+		public bool IsPsych = false;
+
 
 
         public Vector3 Velocity
@@ -123,16 +126,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init (transform, cam.transform);
+			IsPsych = false;
         }
 
 
         private void Update()
         {
+			if (IsPsych)
+				return;
+
             RotateView();
 
             if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
             {
-                m_Jump = true;
+                //m_Jump = true;
             }
         }
 
@@ -211,6 +218,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Vector2 GetInput()
         {
+			if (IsPsych)
+				return Vector2.zero;
             
             Vector2 input = new Vector2
                 {
@@ -224,6 +233,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
+			if (IsPsych)
+				return;
             //avoids the mouse looking if the game is effectively paused
             if (Mathf.Abs(Time.timeScale) < float.Epsilon) return;
 
