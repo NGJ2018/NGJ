@@ -7,7 +7,7 @@ public abstract class Clickable : MonoBehaviour {
 
     public Material basic_material;
     public Material basic_material_with_outline;
-    private int counter = 0;
+    public bool playAudio;
 
     public abstract void Interact();
 
@@ -19,7 +19,7 @@ public abstract class Clickable : MonoBehaviour {
         if(render != null){
             render.material = basic_material_with_outline;
             var spriteGlow = this.GetComponent<SpriteGlowEffect>();
-            if (spriteGlow != null){
+            if (spriteGlow != null && playAudio){
                 //counter++;
                 //spriteGlow.enabled = true;
                 
@@ -32,7 +32,6 @@ public abstract class Clickable : MonoBehaviour {
                 }else { spriteGlow.OutlineWidth = 10.0f; }
                 
             }
-            else { Debug.Log("spriteGlowEffect is null"); }
         }
     }
 
@@ -45,7 +44,6 @@ public abstract class Clickable : MonoBehaviour {
                 //spriteGlow.enabled = false;
                 spriteGlow.OutlineWidth = 0;
                 spriteGlow.AlphaThreshold = 0.0f;
-                counter = 0;
             }
             else { Debug.Log("spriteGlowEffect is null"); }
 

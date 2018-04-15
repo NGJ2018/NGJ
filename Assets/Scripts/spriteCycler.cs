@@ -9,7 +9,7 @@ public class spriteCycler : MonoBehaviour {
     public float cycleSpeed = 0.1f;
 
 	// Use this for initialization
-	void Awake () {
+	void OnEnable () {
         thisRenderer = this.GetComponent<SpriteRenderer>();
         StartCoroutine(cycleSprites());
 	}
@@ -20,8 +20,6 @@ public class spriteCycler : MonoBehaviour {
 
     IEnumerator cycleSprites()
     {
-        Debug.Log("CoroutineStarted");
-
         int i = 0;
 
         while (true) {

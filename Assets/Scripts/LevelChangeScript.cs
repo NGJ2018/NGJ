@@ -1,47 +1,82 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class LevelChangeScript : MonoBehaviour {
+	private GameObject Player;
 
-    private Dictionary<int,GameObject> levelEntrences;
-    private int currentLevel;
-	public int CurrentLevel{
-		get{ 
-			return currentLevel;
-		}
-	}
+	private RoomHolder curEnabled;
+
+	private Queue<RoomHolder> RQ;
+	public RoomHolder StartingRoom;
+
+	public PsychHolder Psych;
 
 	// Use this for initialization
 	void Start () {
-        levelEntrences = new Dictionary<int, GameObject>();
-        var entrences = GameObject.FindGameObjectsWithTag("Level_Entrence");
-        foreach(var level in entrences){
-            var arr = level.name.Split('_');
+		RQ = new Queue<RoomHolder> ();
+		Player = GameObject.FindGameObjectWithTag ("Player");
 
-            levelEntrences.Add(int.Parse(arr[1]),level);
-        }
+		RQ.Enqueue (StartingRoom);
 
-        currentLevel = 0;
         changeLevel();
-
     }
 
     public void changeLevel(){
-        var newPos = levelEntrences[currentLevel];
-        if(newPos != null){
-            setPlayerPositionAndRotation(newPos);
-            currentLevel++;
-        }
+		print ("change");
+
+		RoomHolder holder = RQ.Dequeue();
+
+		if (holder.PsychFirst) {
+			var ps = Psych;
+			ps.NextRoom = holder.NextRoom;
+
+			RQ.Enqueue (ps); //pysch
+		} else{
+			RQ.Enqueue (holder.NextRoom);
+		}
+
+		if (curEnabled != null) {
+			curEnabled.gameObject.SetActive (false);
+		}
+
+		curEnabled = holder;
+		holder.gameObject.SetActive (true);
+		setPlayerPositionAndRotation(holder.SpawnPoint);
+	
+
+		try{
+			BlinkController.OnBlink -= changeLevel;
+		} catch(System.Exception e){
+			
+		}
     }
 
     void setPlayerPositionAndRotation(GameObject newPositionAndRotation){
-        this.gameObject.transform.position = newPositionAndRotation.transform.position;
-        this.gameObject.transform.rotation = newPositionAndRotation.transform.rotation;
-    }
-	
-	// Update is called once per frame
-	void Update () {
+		var rb = Player.GetComponent<Rigidbody> ();
 
-	}
+		rb.isKinematic = true;
+
+		Vector3 newRot = new Vector3 (
+			                 newPositionAndRotation.transform.rotation.x,
+			                 newPositionAndRotation.transform.rotation.y,
+			                 newPositionAndRotation.transform.rotation.z);
+		
+		var cont = Player.GetComponent<RigidbodyFirstPersonController> ();
+
+		cont.enabled = false;
+		rb.position = newPositionAndRotation.transform.position;
+
+
+
+		Player.transform.position = newPositionAndRotation.transform.position;
+		Player.transform.rotation = newPositionAndRotation.transform.rotation;
+
+		Camera.main.transform.rotation = Quaternion.Euler (Vector3.zero);
+
+		rb.rotation = Quaternion.Euler(newRot);
+		cont.enabled = true;
+		rb.isKinematic = false;
+    }
 }

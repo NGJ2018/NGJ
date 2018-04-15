@@ -12,10 +12,9 @@ public class AudioSender : Clickable {
 	private float Freq;
 
 	void Start () {
-		AS = GetComponent<AudioSource> ();
+        playAudio = true;
+        AS = GetComponent<AudioSource> ();
 		ACF = GetComponent<AudioChorusFilter> ();
-		print (this.GetType ());
-
 		Freq = UnityEngine.Random.Range (1, 10);
 
 		ACF.rate = 7.4f;
@@ -40,7 +39,9 @@ public class AudioSender : Clickable {
 
 	public override void Interact(){
 		TurnOff ();
-	}
+        playAudio = false;
+        NoHover();
+    }
 
 	public void TurnOff (){
 		AS.Stop ();

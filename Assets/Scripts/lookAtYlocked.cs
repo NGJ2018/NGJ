@@ -6,13 +6,10 @@ public class lookAtYlocked : MonoBehaviour {
 
     public GameObject target;
 
-	// Use this for initialization
-	void Start () {
-        target = GameObject.Find("MainCamera");
-	}
-	
-	// Update is called once per frame
 	void Update () {
-        transform.LookAt(target.transform, Vector3.up);
+		target = Camera.main.gameObject;
+		if (target != null) {
+			transform.LookAt (transform.position + new Vector3 (target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z));
+		}
 	}
 }

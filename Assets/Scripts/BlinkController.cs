@@ -15,17 +15,13 @@ public class BlinkController : MonoBehaviour {
 
 	private Material blinkMat;
 
+	public bool IsBlinking = false;
+
 	public static BlinkController Singleton;
 
 	[Range(0,1)]
 	public float Progress;
 
-
-	public void Update(){
-		if (Input.GetButtonDown ("Blink")) {
-			InitiateBlink ();
-		}
-	}
 
 	public void Start(){
 		blinkMat = new Material(Shader.Find("Custom/BlinkShader"));
@@ -34,6 +30,8 @@ public class BlinkController : MonoBehaviour {
 
 		OnBlink += RandomBlinkStuff;
 		OnBlinkEnd += RandomBLinkStuffEnd;
+
+		//StartCoroutine (ConstantBlink ());
 
 		Singleton = this;
         crosshair = GameObject.Find("CrossHair").GetComponent<Image>();
@@ -44,20 +42,16 @@ public class BlinkController : MonoBehaviour {
 		Graphics.Blit (src, dst, blinkMat);
 	}
 
-	public static void RandomBlinkStuff(){
-		print ("BlinkStart");
+	public void RandomBlinkStuff(){
+		IsBlinking = true;
     }
 
-	public static void RandomBLinkStuffEnd(){
-		print ("BlinkEnd");
+	public void RandomBLinkStuffEnd(){
+		IsBlinking = false;
 	}
 
 	public void InitiateBlink(){
 		anim.SetTrigger ("Blink");
-	}
-
-	private static void InitiateBlinkRender(){
-		
 	}
 
 	/*
@@ -83,7 +77,13 @@ public class BlinkController : MonoBehaviour {
 
 	public IEnumerator BlackEffectRoutine(){
 		yield return new WaitForEndOfFrame ();
+	}
 
+	public IEnumerator ConstantBlink(){
+		while (true) {
+			yield return new WaitForSeconds (Random.Range (6,8));
+			InitiateBlink ();
+		}
 	}
 
 }
